@@ -1,6 +1,7 @@
 /* Genereate random users with data from faker-js */
 import { faker } from '@faker-js/faker';
 export const USERS = [];
+const userCount = 8; //set initial users here
 const CreateRandomUser = (id)=>{
     return {
       "id": id,
@@ -11,8 +12,8 @@ const CreateRandomUser = (id)=>{
     }
 }
 
-/* 30 users generating */
+/* users generating */
 let i = 1;
-Array.from({ length: 8 }).forEach(() => {
+Array.from({ length: userCount }).forEach(() => {
     USERS.push(CreateRandomUser(i++));
 });
