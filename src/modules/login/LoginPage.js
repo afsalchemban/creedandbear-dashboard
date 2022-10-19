@@ -10,9 +10,10 @@ import { login, randomUser } from "../../fake-api/api";
 export const LoginPage = (props) => {
 
   const [loggedUser, setLoggedUser] = useContext(UserContext); //take loggedIn user from store
+  const [loading, setLoading] = useState(false); //take loggedIn user from store
   const navigate = useNavigate(); // used to navigate to users page when logged successfully
 
-  
+
   /* to store form data */
   const [loginInfo, setLoginInfo] = useState({
     email: '',
@@ -30,6 +31,7 @@ export const LoginPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevents the submit button from refreshing the page
     setMessage(null);
+    setLoading(true);
     try {
       const result = await login(loginInfo.email, loginInfo.password);
       setLoggedUser(result.data.user);
@@ -37,6 +39,7 @@ export const LoginPage = (props) => {
     } catch (error) {
       setMessage(error.message);
     }
+    setLoading(false);
   };
   /* submit button click */
 
@@ -44,9 +47,14 @@ export const LoginPage = (props) => {
 
   /* show random credentials to test login */
   const [emailInfo, setEmailInfo] = useState(null);
-  const getLoginDetails = () => {
-    const user = randomUser();
-    setEmailInfo(user.email);
+  const getLoginDetails = async () => {
+    try {
+      const user = await randomUser();
+      setEmailInfo(user.email);
+    }
+    catch (error) {
+      setEmailInfo(error.message);
+    }
   }
   useEffect(() => {
     getLoginDetails();
@@ -88,10 +96,12 @@ export const LoginPage = (props) => {
                         />
                       </div>
                       <div className="text-center pt-1 mb-12 pb-1">
-                        <Button icon={save} type="submit" color="bg-indigo-700" hover="bg-indigo-800">Login</Button>
+                        <Button icon={save} type="submit" color="bg-indigo-700" disable={loading} hover="bg-indigo-800">{loading ? 'Loading...' : 'Login'}</Button>
                       </div>
                     </form>
-                    <p className="text-red-600 text-center text-sm">{message}</p>
+                    <div className="h-3">
+                      <p className="text-red-600 text-center text-sm">{message}</p>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -100,11 +110,17 @@ export const LoginPage = (props) => {
                 >
                   <div className="text-white px-4 py-6 md:p-12 md:mx-6">
                     <h4 className="text-xl font-semibold mb-6">For testing login please follow instructions below</h4>
-                    <div className="text-sm">
+                    {
+                      emailInfo!=='No users' &&
+                      <div className="text-sm">
                       Use this random user information to login
                       <p>email :{emailInfo}</p>
                       <p>password :123456</p>
-                    </div>
+                    </div>}
+                    {
+                      emailInfo=='No users' &&
+                      <div className="text-lg text-bold">{emailInfo}</div>
+                    }
                   </div>
                 </div>
               </div>
