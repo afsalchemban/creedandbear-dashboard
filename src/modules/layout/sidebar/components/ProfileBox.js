@@ -37,7 +37,6 @@ export const ProfileBox = (props) => {
                     <div className="grow p-2">
                         <div className="text-sm">You are not logged in !</div>
                         <div className="text-xs">
-                            <Link to="/login">Login</Link>
                         </div>
                     </div>
                 </div>
