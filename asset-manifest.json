@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/creedandbear-dashboard/static/css/main.df114c29.css",
-    "main.js": "/creedandbear-dashboard/static/js/main.c176c755.js",
+    "main.css": "/creedandbear-dashboard/static/css/main.8acac2b8.css",
+    "main.js": "/creedandbear-dashboard/static/js/main.23fbb434.js",
     "static/js/787.5f333a74.chunk.js": "/creedandbear-dashboard/static/js/787.5f333a74.chunk.js",
     "index.html": "/creedandbear-dashboard/index.html",
-    "main.df114c29.css.map": "/creedandbear-dashboard/static/css/main.df114c29.css.map",
-    "main.c176c755.js.map": "/creedandbear-dashboard/static/js/main.c176c755.js.map",
+    "main.8acac2b8.css.map": "/creedandbear-dashboard/static/css/main.8acac2b8.css.map",
+    "main.23fbb434.js.map": "/creedandbear-dashboard/static/js/main.23fbb434.js.map",
     "787.5f333a74.chunk.js.map": "/creedandbear-dashboard/static/js/787.5f333a74.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.df114c29.css",
-    "static/js/main.c176c755.js"
+    "static/css/main.8acac2b8.css",
+    "static/js/main.23fbb434.js"
   ]
 }
